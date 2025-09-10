@@ -1,0 +1,33 @@
+[profile.default]
+# Run tests in parallel with 4 threads
+test-threads = 4
+
+# Show output for all tests
+failure-output = "immediate"
+success-output = "never"
+
+# Set timeout for tests
+slow-timeout = { period = "120s" }
+leak-timeout = { period = "120s" }
+
+# Configure retries for flaky tests
+retries = 1
+
+[profile.ci]
+# CI profile with stricter settings
+test-threads = 2
+retries = 0
+failure-output = "immediate-final"
+success-output = "never"
+
+[test-groups.clipboard]
+# Group clipboard tests to run serially since they share system clipboard
+max-threads = 1
+
+[test-groups.filesystem]
+# Group filesystem tests that might conflict
+max-threads = 2
+
+[test-groups.recording]
+# Recording tests need exclusive access to recording hardware
+max-threads = 1

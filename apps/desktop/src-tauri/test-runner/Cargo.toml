@@ -1,0 +1,20 @@
+[package]
+name = "cap-desktop-tests"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+
+[lib]
+name = "cap_desktop_tests"
+path = "src/lib.rs"
+
+[dependencies]
+tokio = { version = "1.39.3", features = ["macros", "rt", "fs", "time"] }
+uuid = { version = "1.10.0", features = ["v4"] }
+serde_json = "1.0.111"
+tempfile = "3.9.0"
+
+[dev-dependencies]
+serial_test = "3.2.0"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
